@@ -1,0 +1,9 @@
+find the child_to relations:
+
+MATCH(m:meme)-[:child_to]->(n:meme) RETURN m.title, n.title LIMIT 100
+
+find relations for given meme:
+
+MATCH (m:meme)-[r]-(n:meme) WHERE ID(m) = 2100 RETURN m.title, type(r), n.title
+
+some more specific path: MATCH (m:meme)-[r]->(n:meme)-[p]->(o:meme) WHERE ID(m) = 200 AND NOT (m)-[:sibling_to]-(n) AND NOT (o)-[:sibling_to]-(n) RETURN m.title, type(r),n.title, type(p), o.title
