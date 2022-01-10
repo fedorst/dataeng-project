@@ -28,6 +28,7 @@ There should be 2 connections present (if not they need to be created):
     * Password - airflow
     * Port - 5432
 
+
     2)
     * Conn Id - neo4j_default
     * Conn Type - Neo4j
