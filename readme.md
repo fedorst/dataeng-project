@@ -18,23 +18,23 @@ Team: Robert Altmäe, Raul Niit, Fedor Stomakhin, Aleksandr Krylov
 
 5) In airflow, on the tab pane locate Admin -> Connections
 There should be 2 connections present (if not they need to be created):
-1) 
-* Conn Id - postgres_default
-* Conn Type - Postgres
-* Host - postgres
-* Schema - postgres
-* Login - airflow
-* Password - airflow
-* Port - 5432
+    1) 
+    * Conn Id - postgres_default
+    * Conn Type - Postgres
+    * Host - postgres
+    * Schema - postgres
+    * Login - airflow
+    * Password - airflow
+    * Port - 5432
 
-2)
-* Conn Id - neo4j_default
-* Conn Type - Neo4j
-* Host - neo
-* Schema - neo4j
-* Login - 
-* Password - 
-* Port - 7687
+    2)
+    * Conn Id - neo4j_default
+    * Conn Type - Neo4j
+    * Host - neo
+    * Schema - neo4j
+    * Login - 
+    * Password - 
+    * Port - 7687
 
 6) On the home page, clicking the unpause button next to the dag name runs the dag.
 
