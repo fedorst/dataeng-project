@@ -17,7 +17,8 @@ Team: Robert Altmäe, Raul Niit, Fedor Stomakhin, Aleksandr Krylov
 * http://localhost:7474/ (Neo4j)
 
 5) In airflow, on the tab pane locate Admin -> Connections
-There should be 2 connections present (if not they need to be created):
+There should be 2 connections present (if not they need to be created):  
+
     1) 
     * Conn Id - postgres_default
     * Conn Type - Postgres
