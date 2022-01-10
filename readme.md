@@ -45,4 +45,12 @@ There should be 2 connections present (if not they need to be created):
 
 7) After the dag has finished, the data should be ready to be queried in PGAdmin and Neo4j.
 
+    PGAdmin connection
+    * On the left Servers -> Create server
+    * General -> Name: memes (can be whatever)
+    * Connection -> Host name/adress: postgres
+    * Connection -> Username: airflow
+    * Connection -> Password: airflow
+    
+
 GL HF :)
