@@ -621,7 +621,6 @@ def create_graph_table_query(path):
                         f.write(
                             f"CREATE ({chi_title})-[:child_to]->({title})\n"
                         )
-
         f.close()
 
 
@@ -705,7 +704,7 @@ task_five = PythonOperator(
 )
 
 task_six = PythonOperator(
-    task_id="create_tables",
+    task_id="split_tables",
     dag=main_dag,
     python_callable=create_tables,
     op_kwargs={"path": "/opt/airflow/dags/data_cleansed.parquet"},
@@ -813,11 +812,14 @@ task_eight_f = PostgresOperator(
     autocommit=True
 )
 
+with open("/opt/airflow/dags/graph_table_inserts.sql", "r", encoding="utf8") as f:
+    lines = f.read().replace('\n', ' ')
+
 task_eight_i = Neo4jOperator(
     task_id='insert_graph_table_query',
     dag=main_dag,
     neo4j_conn_id='neo4j_default',
-    sql='graph_table_inserts.sql',
+    sql=lines,
     trigger_rule='all_success'
 )
 

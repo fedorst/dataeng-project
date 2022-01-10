@@ -1,9 +1,22 @@
-find the child_to relations:
+1) Given a meme m, what are the related memes n in the dataset?
+Assuming the meme m title is “I Like Turtles”
 
-MATCH(m:meme)-[:child_to]->(n:meme) RETURN m.title, n.title LIMIT 100
+MATCH(m:meme)-[:child_to]->(n:meme) WHERE m.title = "I like turtles"  RETURN m.title, n.title
 
-find relations for given meme:
+Answer: There are a total of 45 siblings and 1 parent to this particular meme.
 
-MATCH (m:meme)-[r]-(n:meme) WHERE ID(m) = 2100 RETURN m.title, type(r), n.title
 
-some more specific path: MATCH (m:meme)-[r]->(n:meme)-[p]->(o:meme) WHERE ID(m) = 200 AND NOT (m)-[:sibling_to]-(n) AND NOT (o)-[:sibling_to]-(n) RETURN m.title, type(r),n.title, type(p), o.title
+2) Given a meme m, what are memes n and o, that form a path from m and that contain at least 2 different types of relationships?
+Assuming the meme m title is “Technoviking”
+
+MATCH (m:meme)-[r]->(n:meme)-[p]->(o:meme) WHERE m.title = "Technoviking" AND NOT type(r) = type(p) RETURN m.title, type(r),n.title, type(p), o.title
+
+Answer: There are a total of 94 records for this meme, consisting of 2 different types of paths: a) where m is sibling to n and n is child to o, b) where m is child to n and n is parent to o. Path b) in essence maps the sibling relationship through the common parent.
+
+
+3) What are the paths that lead to some memes that are grand-grandparents?
+
+MATCH p = (m:meme)-[:child_to]->(n:meme)-[:child_to]->(o:meme)-[:child_to]->(k:meme) RETURN p
+
+
+Answer: There are a total of 20 paths like this, one of the most notable grandparents being “Image macros”, which makes sense, as it is quite a general meme.

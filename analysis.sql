@@ -50,7 +50,7 @@ GROUP BY MEME_TYPE;
 
 /* 6. How many tags on average are assigned to meme entries? */
 SELECT (AVG(LENGTH(tags) - LENGTH(REPLACE(tags, ',', '')))) AS avg_tags 
-FROM additional_analysis;
+FROM additional_analysis_table;
 /* ANSWER: 7.3976293103448276 */
 
 /* 7. What meme had the most long-lasting search interest? */
@@ -86,6 +86,7 @@ ORDER BY UNSAFETY DESC
 SELECT COUNT(*), date_dimension.YEAR
 FROM fact_table
 LEFT JOIN date_dimension ON fact_table.DATE_ID = date_dimension.DATE_ID
+WHERE date_dimension.YEAR != 0
 GROUP BY date_dimension.YEAR
 ORDER BY count ASC;
 /* ANSWER: see result. */
